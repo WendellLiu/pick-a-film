@@ -1,4 +1,8 @@
-(ns pick-a-film.handlers)
+(ns pick-a-film.handlers (:require [environ.core :refer [env]]))
+
+(defn home
+  [request]
+  (env :openai-host))
 
 (defn health-check
   [request]

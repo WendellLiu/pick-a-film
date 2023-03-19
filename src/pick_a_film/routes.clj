@@ -6,6 +6,7 @@
 
 (compojure/defroutes app
   (compojure/POST "/webhook" params webhook/handler)
+  (compojure/GET "/" params other-handlers/home)
   (compojure/GET "/health" params other-handlers/health-check)
 
   (compojure-route/not-found other-handlers/not-found))
