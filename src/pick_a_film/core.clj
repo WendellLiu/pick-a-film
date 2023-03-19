@@ -1,8 +1,14 @@
-(ns pick-a-film.core)
+(ns pick-a-film.core
+  (:gen-class)
+  (:require ,
+   [clojure.pprint]
+   [compojure.core :as compojure]
+   [compojure.route :as compojure-route]
+   [pick-a-film.routes]
+   [ring.adapter.jetty :as jetty]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
-
-(defn -main [& args] (foo "Wen"))
+(defn -main
+  [& args]
+  (jetty/run-jetty pick-a-film.routes/app
+                   {:port 3000
+                    :join? true}))
